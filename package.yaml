@@ -1,0 +1,244 @@
+name:                aoc2018
+version:             0.1.0.0
+github:              "jan.bols@ebit.be/aoc2018"
+license:             BSD3
+author:              "Jan Bols"
+maintainer:          "jan.bols@ebit.be"
+copyright:           "2018 Jan Bols"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/jan.bols@ebit.be/aoc2018#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  day01:
+    main:                Main.hs
+    source-dirs:         day01
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day02:
+    main:                Main.hs
+    source-dirs:         day02
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day03:
+    main:                Main.hs
+    source-dirs:         day03
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day04:
+    main:                Main.hs
+    source-dirs:         day04
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day05:
+    main:                Main.hs
+    source-dirs:         day05
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day06:
+    main:                Main.hs
+    source-dirs:         day06
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day07:
+    main:                Main.hs
+    source-dirs:         day07
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day08:
+    main:                Main.hs
+    source-dirs:         day08
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day09:
+    main:                Main.hs
+    source-dirs:         day09
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day10:
+    main:                Main.hs
+    source-dirs:         day10
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day11:
+    main:                Main.hs
+    source-dirs:         day11
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day12:
+    main:                Main.hs
+    source-dirs:         day12
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day13:
+    main:                Main.hs
+    source-dirs:         day13
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day14:
+    main:                Main.hs
+    source-dirs:         day14
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day15:
+    main:                Main.hs
+    source-dirs:         day15
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day16:
+    main:                Main.hs
+    source-dirs:         day16
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day17:
+    main:                Main.hs
+    source-dirs:         day17
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day18:
+    main:                Main.hs
+    source-dirs:         day18
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day19:
+    main:                Main.hs
+    source-dirs:         day19
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day20:
+    main:                Main.hs
+    source-dirs:         day20
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day21:
+    main:                Main.hs
+    source-dirs:         day21
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day22:
+    main:                Main.hs
+    source-dirs:         day22
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day23:
+    main:                Main.hs
+    source-dirs:         day23
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
+  day24:
+    main:                Main.hs
+    source-dirs:         day24
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - aoc2018
