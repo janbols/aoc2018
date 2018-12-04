@@ -53,6 +53,7 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - aoc2018
+    - split
   day04:
     main:                Main.hs
     source-dirs:         day04
