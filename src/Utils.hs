@@ -1,4 +1,4 @@
-module Utils(partSelection, requestInput, requestMultilineInput) where
+module Utils(partSelection, requestInput, requestMultilineInput, extract_1, extract_2, extract_3, partition, partitionAt) where
 
 
 partSelection:: IO Int
@@ -24,3 +24,23 @@ requestMultilineInput:: IO String
 requestMultilineInput = do
     _ <- putStrLn "Input... (finish with Ctrl+D)"
     getContents
+
+
+extract_1:: (a,b,c) -> a
+extract_1 (a,_,_) = a
+
+extract_2:: (a,b,c) -> b
+extract_2 (_,b,_) = b
+
+extract_3:: (a,b,c) -> c
+extract_3 (_,_,c) = c
+
+
+partitionAt :: (a->Bool) -> [a] -> [[a]]
+partitionAt _ [] = []
+partitionAt f (x:xs) = (x : takeWhile (not . f) xs) : partitionAt f (dropWhile (not . f) xs)
+
+partition :: Int -> [a] -> [[a]]
+partition _ [] = []
+partition n xs = take n xs : partition n (drop n xs)
+

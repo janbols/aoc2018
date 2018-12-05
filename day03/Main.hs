@@ -33,7 +33,7 @@ pt2 input =
       merged = mergePoints unioned
       overlappingPoints = filter (( > 1) . length  . snd . unPointOcc ) merged
       overlappingIds = nub $ concatMap (snd . unPointOcc) overlappingPoints
-      allIds = map (fstFromTriple . unClaim) claims
+      allIds = map (extract_1 . unClaim) claims
   in head (allIds \\ overlappingIds)
 --  let ss = lines input
 --      claims = map (claimToClaimWithPos . extractClaim) ss
@@ -41,8 +41,6 @@ pt2 input =
 --      noneOverlapping = filter ftr claims
 --  in fst $ unClaimWithPos $ head noneOverlapping
 
-fstFromTriple:: (a,b,c) -> a
-fstFromTriple (a,_,_) = a
 
 type Point = (Int, Int)
 

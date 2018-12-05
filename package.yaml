@@ -63,6 +63,9 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - aoc2018
+    - strptime
+    - MissingH
+    - time
   day05:
     main:                Main.hs
     source-dirs:         day05
