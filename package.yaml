@@ -75,6 +75,7 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - aoc2018
+    - MissingH
   day06:
     main:                Main.hs
     source-dirs:         day06
