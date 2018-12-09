@@ -1,32 +1,61 @@
+{-# LANGUAGE NamedFieldPuns #-}
+
 module Main where
 
-import Data.Char
-import Utils
+import Prelude hiding (length, zip)
+import qualified Data.List as List
+import           Utils
+import           Debug.Trace
+import           Data.Sequence as Seq
 
 main :: IO ()
 main = do
   ptNr <- partSelection
-  input <- requestInput
-  if ptNr == 1 then print $ pt1 input
-    else print $ pt2 input
+  if ptNr == 1
+    then do
+           _ <- putStrLn "nr of players..."
+           nrOfPlayers <- getLine
+           _ <- putStrLn "max marble..."
+           maxMarble <- getLine
+           print $ pt1 (read nrOfPlayers) (read maxMarble)
+    else do
+           input <- requestInput
+           print $ pt2 input
 
+pt1 :: Int -> Int -> Seq Score
+pt1 nrOfPlayers maxMarble = go stackOfMarbles beginCircle beginCurrent beginScore
+  where stackOfMarbles = List.zip (cycle [0..nrOfPlayers-1]) [1..maxMarble]
+        beginCircle = singleton 0
+        beginCurrent = (0,0)
+        beginScore = fromList $ List.replicate nrOfPlayers 0
 
-pt1 :: String -> Int
-pt1 = inverseCaptcha 1
+        go:: [(Player,Marble)] -> Seq Marble -> Current  -> Seq Score -> Seq Score
+        go [] circle current score = score
+        go ((p,m):restOfStack) circle (currentIx, currentMarble) score | mod m 23 == 0 =
+           go restOfStack circleRemoved newCurrent newScore
+            where removePosition = cycleMove circle (\ i -> i-7) currentIx
+                  removedMarble = index circle removePosition
+                  circleRemoved = deleteAt removePosition circle
+                  newCurrent = (removePosition, index circleRemoved removePosition)
+                  newScore = adjust (\s -> s + removedMarble + m) p score
+
+        go ((p,m):restOfStack) circle (currIx, currMarble) score=
+          go restOfStack circleInserted (insertPosition, m) score
+            where insertPosition = cycleMove circle (+2) currIx
+                  circleInserted = insertAt insertPosition m circle
+
 
 pt2 :: String -> Int
-pt2 cs = inverseCaptcha (length cs `quot` 2) cs
+pt2 s = undefined
 
-inverseCaptcha :: Int -> String -> Int
-inverseCaptcha dropCnt cs =
-  let xs = withPeek dropCnt (map digitToInt cs)
-  in xs -: filter pairMatches -: map fst -: sum
+type Player = Int
+type Marble = Int
+type Current = (Int, Marble)
+type Score = Int
 
-withPeek:: Int -> [a]-> [(a,a)]
-withPeek dropCnt xs = zip xs $ drop dropCnt $ cycle xs
 
-pairMatches :: Eq a => (a,a) -> Bool
-pairMatches = uncurry (==)
+cycleMove:: Seq a -> (Int -> Int) -> (Int -> Int)
+cycleMove c f = (\ i -> if i == 0 then Seq.length c else i) . (\ i -> mod i $ Seq.length c) . f
 
-(-:) :: a -> ( a -> b ) -> b
-x -: f = f x
+
+
