@@ -1,5 +1,6 @@
-module Utils(partSelection, requestInput, requestMultilineInput, extract_1, extract_2, extract_3, partition, partitionAt) where
+module Utils(partSelection, requestInput, requestMultilineInput, extract_1, extract_2, extract_3, partition, partitionAt, trim) where
 
+import Data.Char
 
 partSelection:: IO Int
 partSelection = do
@@ -44,3 +45,5 @@ partition :: Int -> [a] -> [[a]]
 partition _ [] = []
 partition n xs = take n xs : partition n (drop n xs)
 
+trim:: String -> String
+trim = dropWhile isSpace
