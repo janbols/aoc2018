@@ -4,7 +4,6 @@ module Main where
 
 import           Data.Char
 import           Data.List
-import           Data.List.Split
 import           Utils
 
 main :: IO ()

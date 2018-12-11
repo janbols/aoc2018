@@ -30,7 +30,7 @@ pt2 s = sum $ referencedMetadata node
           Just c -> referencedMetadata c
         referencedMetadata:: Node -> [Int]
         referencedMetadata Node{ children = [], metadata = md} = md
-        referencedMetadata Node{ children = cs, metadata = md} = concatMap (findChildMetadataByRef md
+        referencedMetadata Node{ children = cs, metadata = md} = concatMap (findChildMetadataByRef cs)  md
 
 parseInput :: String -> [Int]
 parseInput s = map read $ words s
