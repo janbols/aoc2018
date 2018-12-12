@@ -3,7 +3,9 @@ module Main where
 import           Control.Applicative
 import           Control.Arrow
 import           Data.Char
+import           Data.Functor
 import           Data.List
+import           Data.Maybe
 import           Data.Tuple
 import           Utils
 import           Debug.Trace
@@ -46,12 +48,12 @@ nextPosition ((x,y), (vx,vy)) = ((x+vx, y+vy), (vx, vy))
 
 hasSigns:: [Star] -> Bool
 hasSigns stars =
-  let sortedByCol = sort $ fmap fst stars
+  let sortedByCol = sort (fst <$> stars)
       groupedByCol = groupBy (\(x1, _) (x2, _) -> x1 == x2) sortedByCol
-      rowGroupedByCol = map (map snd) groupedByCol
-      diffPerCol = map (\sameCol -> zipWith (-) sameCol (tail sameCol)) rowGroupedByCol
-      differsBy1 = fmap (filter (==(-1))) diffPerCol
-   in maximum (map length differsBy1 ) >= 7
+      rowGroupedByCol = map snd <$> groupedByCol
+      differsBy1 = filter (== (-1)) <$> (diffWithNext <$> rowGroupedByCol)
+        where diffWithNext sameCol = zipWith (-) sameCol (tail sameCol)
+   in maximum (map length differsBy1) >= 7
 
 showStars :: [Star] ->String
 showStars  stars =

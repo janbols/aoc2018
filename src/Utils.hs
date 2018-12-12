@@ -1,6 +1,7 @@
-module Utils(partSelection, requestInput, requestMultilineInput, extract_1, extract_2, extract_3, partition, partitionAt, trim) where
+module Utils(partSelection, requestInput, requestMultilineInput, extract_1, extract_2, extract_3, partition, partitionAt, trim,stackSafeMaximumBy) where
 
 import Data.Char
+import qualified Data.List as List
 
 partSelection:: IO Int
 partSelection = do
@@ -47,3 +48,12 @@ partition n xs = take n xs : partition n (drop n xs)
 
 trim:: String -> String
 trim = dropWhile isSpace
+
+stackSafeMaximumBy :: (a -> a -> Ordering) -> [a] -> a
+stackSafeMaximumBy cmp = List.foldl1' max'
+  where
+    max' x y =
+      case cmp x y of
+        GT -> x
+        _  -> y
+

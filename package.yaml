@@ -131,6 +131,7 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - aoc2018
+    - containers
   day12:
     main:                Main.hs
     source-dirs:         day12
