@@ -150,6 +150,7 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - aoc2018
+    - matrix
   day14:
     main:                Main.hs
     source-dirs:         day14
